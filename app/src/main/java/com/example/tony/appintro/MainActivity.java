@@ -9,6 +9,36 @@ import android.view.MenuItem;
 public class MainActivity extends ActionBarActivity {
 
     @Override
+    public void init(Bundle savedInstanceState) {
+
+        // Add your slide's fragments here
+        // AppIntro will automatically generate the dots indicator and buttons.
+        addSlide(first_fragment);
+        addSlide(second_fragment);
+        addSlide(third_fragment);
+        addSlide(fourth_fragment);
+
+        // Instead of fragments, you can also use our default slide
+        // Just set a title, description, background and image. AppIntro will do the rest
+        addSlide(AppIntroFragment.newInstance(title, description, image, background_colour));
+
+        // OPTIONAL METHODS
+        // Override bar/separator color
+        setBarColor(Color.parseColor("#3F51B5"));
+        setSeparatorColor(Color.parseColor("#2196F3"));
+
+        // Hide Skip/Done button
+        showSkipButton(false);
+        showDoneButton(false);
+
+        // Turn vibration on and set intensity
+        // NOTE: you will probably need to ask VIBRATE permesssion in Manifest
+        setVibrate(true);
+        setVibrateIntensity(30);
+    }
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
